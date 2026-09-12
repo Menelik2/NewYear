@@ -8,15 +8,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;height:100dvh;overflow:hidden;font-family:'Noto Sans Ethiopic',system-ui,sans-serif;background:#060a1e;color:#fff;text-align:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}#fx{position:fixed;inset:0;z-index:0}.stage{position:relative;z-index:2;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:max(20px,env(safe-area-inset-top)) 16px max(20px,env(safe-area-inset-bottom))}.screen{display:none;flex-direction:column;align-items:center;width:100%;max-width:640px}.screen.active{display:flex}.pill{display:inline-block;padding:8px 16px;border-radius:999px;font-size:.85rem;color:#ffe9a3;background:rgba(255,215,120,.12);border:1px solid rgba(255,215,120,.38);margin-bottom:14px}h1{font-size:clamp(1.7rem,7vw,3rem);font-weight:900;color:#ffd76a;text-shadow:0 0 24px rgba(255,190,60,.5);margin:8px 0 12px}.lead{font-size:1rem;color:#efe9d8;max-width:480px;margin:0 auto 16px;line-height:1.7}.card{background:rgba(12,16,34,.6);border:1px solid rgba(255,215,120,.28);border-radius:18px;padding:20px;max-width:360px;width:100%}input{width:100%;padding:14px;font-size:1.05rem;font-family:inherit;text-align:center;color:#fff;background:rgba(255,255,255,.09);border:2px solid rgba(255,215,120,.55);border-radius:12px;outline:none}input:focus{border-color:#ffd76a;box-shadow:0 0 0 4px rgba(255,215,120,.2)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:13px 22px;font-size:1rem;font-weight:700;font-family:inherit;border:none;border-radius:999px;cursor:pointer;min-height:48px}.btn.gold{background:linear-gradient(135deg,#ffd76a,#ff9d3c);color:#3a2000;box-shadow:0 6px 20px rgba(255,180,60,.35)}.btn.ghost{background:rgba(255,255,255,.06);color:#ffe9a3;border:1px solid rgba(255,215,120,.4)}.btn.icon{width:48px;padding:0}.gift{position:relative;width:min(140px,36vw);height:min(150px,40vw);margin:20px auto 10px;cursor:pointer;animation:float 2.5s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(255,205,90,.45))}@keyframes float{50%{transform:translateY(-8px)}}.gift .box{position:absolute;bottom:0;left:8%;width:84%;height:56%;border-radius:6px 6px 10px 10px;background:linear-gradient(165deg,#2fae5f,#14663a)}.gift .box::before{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);width:18%;height:100%;background:linear-gradient(90deg,#caa53d,#ffd76a,#caa53d)}.gift .lid{position:absolute;top:28%;left:2%;width:96%;height:18%;border-radius:6px;background:linear-gradient(165deg,#37bd6b,#186a3e);z-index:2;transition:transform .6s,opacity .6s}.gift .lid::before{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);width:18%;height:100%;background:linear-gradient(90deg,#caa53d,#ffd76a,#caa53d)}.gift .lid.off{transform:translateY(-140%) rotate(28deg);opacity:0}.gift.opened{opacity:0;transform:scale(.5);pointer-events:none}#nameLine{font-size:clamp(1.6rem,7vw,2.8rem);font-weight:900;color:#ffd76a;margin:6px 0 12px;min-height:1.3em}.verse{font-size:clamp(1rem,3.5vw,1.15rem);color:#ffd76a;font-style:italic;max-width:520px;margin:12px auto 16px;line-height:1.6;padding:12px 14px;background:rgba(255,215,120,.07);border-radius:12px;border-left:3px solid #ffd76a;text-align:left}.verse-ref{display:block;font-size:.82em;color:#ffe9a3;margin-top:8px;font-weight:700;font-style:normal;text-align:right}.line{font-size:1rem;line-height:1.7;max-width:500px;margin:6px auto;color:#f0e9d6}.actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}.hint{margin-top:18px;font-size:.9rem;color:#ffe9a3}.credit{margin-top:24px;font-size:.85rem;color:rgba(255,255,255,.65)}.credit a{color:#ffd76a;text-decoration:none;font-weight:700}#toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%) translateY(80px);background:rgba(18,22,38,.94);border:1px solid rgba(255,215,120,.4);color:#ffe9a3;padding:10px 16px;border-radius:999px;font-size:.88rem;opacity:0;transition:.4s;z-index:70}#toast.show{opacity:1;transform:translateX(-50%)}.nav{display:flex;gap:8px;justify-content:center;margin-top:6px}.nav button{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,215,120,.35);background:rgba(255,255,255,.06);color:#ffe9a3;font-size:1rem;cursor:pointer}
+.mode-toggle{display:flex;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+.mode-toggle button{padding:10px 16px;font-size:.9rem;font-weight:700;font-family:inherit;border-radius:999px;border:1px solid rgba(255,215,120,.4);background:rgba(255,255,255,.06);color:#ffe9a3;cursor:pointer;min-height:44px}
+.mode-toggle button.active{background:linear-gradient(135deg,#ffd76a,#ff9d3c);color:#3a2000;border-color:transparent;box-shadow:0 4px 14px rgba(255,180,60,.35)}
 </style>
 </head>
 <body>
 <canvas id="fx"></canvas>
 <div class="stage">
   <div class="screen active" id="s1">
-    <div class="pill">✨ እንኳን ደህና አደረስን · <span id="y1">—</span> ዓ.ም ✨</div>
-    <h1>መልካም አዲስ ዓመት 🌼</h1>
-    <p class="lead">ልዩ የአዲስ ዓመት ስጦታ ተዘጋጅቷል። እባክዎ ስምዎን ያስገቡ።</p>
+    <div class="mode-toggle">
+      <button type="button" id="modeNY" class="active">🌼 አዲስ ዓመት</button>
+      <button type="button" id="modeBD">🎂 ልደት</button>
+    </div>
+    <div class="pill" id="pill1">✨ እንኳን ደህና አደረስን · <span id="y1">—</span> ዓ.ም ✨</div>
+    <h1 id="mainTitle">መልካም አዲስ ዓመት 🌼</h1>
+    <p class="lead" id="mainLead">ልዩ የአዲስ ዓመት ስጦታ ተዘጋጅቷል። እባክዎ ስምዎን ያስገቡ።</p>
     <div class="card">
       <input id="nameInput" placeholder="ስምዎን እዚህ ይጻፉ..." maxlength="24">
       <p id="err" style="color:#ff8a80;min-height:1.2em;margin:8px 0;font-size:.9rem"></p>
@@ -29,7 +36,7 @@
     <p class="hint">👆 ለመክፈት ይንኩት!</p>
   </div>
   <div class="screen" id="s3">
-    <div class="pill">🎉 እንኳን ደህና አደረስን · <span id="y2">—</span> ዓ.ም 🎉</div>
+    <div class="pill" id="pill2">🎉 እንኳን ደህና አደረስን · <span id="y2">—</span> ዓ.ም 🎉</div>
     <div id="nameLine"></div>
     <div class="verse"><span id="vText"></span><span class="verse-ref" id="vRef"></span></div>
     <div class="nav"><button id="prevB">‹</button><button id="nextB">›</button></div>
@@ -54,14 +61,38 @@ const ETH=getEthYear();
 $('y1').textContent=$('y2').textContent=ETH;
 document.title=`መልካም አዲስ ዓመት 🌼 | ${ETH} ዓ.ም`;
 
+let MODE='newyear';
 let BLESSINGS=[
 {verse:'"በቸርነትህ ዓመትን ታቀዳጃለህ፥ ምድረ በዳውም ስብን ይጠግባል።"',ref:'— መዝሙረ ዳዊት 65፥11',line:'አዲሱ ዓመት የሰላም፣ የጤና፣ የብልፅግና እና የደስታ ይሁንልዎት! 🌼'},
 {verse:'"እግዚአብሔር ይባርክህ፥ ይጠብቅህም።"',ref:'— ዘኍልቍ 6፥24',line:'በረከትና ጥበቃ ሁልጊዜ ከእርስዎ ጋር ይሁን! ✨'},
 {verse:'"ተስፋ አትቁረጡ።"',ref:'— ናሆም 1፥7',line:'ይህ ዓመት የተስፋና የድል ዓመት ይሁንልዎት! 🌟'}
 ];
+let NY_CACHE=null, BD_CACHE=null;
 let bIdx=0;
-fetch('blessings.json').then(r=>r.json()).then(d=>{if(Array.isArray(d)&&d.length>3){BLESSINGS=d;showB(Math.floor(Math.random()*BLESSINGS.length))}}).catch(()=>{});
-function showB(i){bIdx=(i+BLESSINGS.length)%BLESSINGS.length;const b=BLESSINGS[bIdx];$('vText').textContent=b.verse;$('vRef').textContent=b.ref;$('bLine').textContent=b.line}
+function showB(i){if(!BLESSINGS.length)return;bIdx=(i+BLESSINGS.length)%BLESSINGS.length;const b=BLESSINGS[bIdx];$('vText').textContent=b.verse;$('vRef').textContent=b.ref;$('bLine').textContent=b.line}
+function loadMessages(){
+  const file=MODE==='birthday'?'birthday.json':'blessings.json';
+  const apply=d=>{if(Array.isArray(d)&&d.length){BLESSINGS=d;if(MODE==='birthday')BD_CACHE=d;else NY_CACHE=d;showB(Math.floor(Math.random()*BLESSINGS.length))}};
+  if(MODE==='birthday'&&BD_CACHE){apply(BD_CACHE);return}
+  if(MODE==='newyear'&&NY_CACHE){apply(NY_CACHE);return}
+  fetch(file).then(r=>r.json()).then(apply).catch(()=>showB(0));
+}
+function setMode(m){
+  MODE=m;
+  const isBD=m==='birthday';
+  $('modeNY').classList.toggle('active',!isBD);
+  $('modeBD').classList.toggle('active',isBD);
+  $('mainTitle').textContent=isBD?'መልካም ልደት 🎂':'መልካም አዲስ ዓመት 🌼';
+  $('mainLead').textContent=isBD?'ልዩ የልደት ስጦታ ተዘጋጅቷል። እባክዎ ስምዎን ያስገቡ።':'ልዩ የአዲስ ዓመት ስጦታ ተዘጋጅቷል። እባክዎ ስምዎን ያስገቡ።';
+  $('pill1').innerHTML=isBD?'🎂 መልካም ልደት · ልዩ ስጦታ 🎁':('✨ እንኳን ደህና አደረስን · <span id="y1">'+ETH+'</span> ዓ.ም ✨');
+  $('pill2').innerHTML=isBD?'🎉 መልካም ልደት 🎂':('🎉 እንኳን ደህና አደረስን · <span id="y2">'+ETH+'</span> ዓ.ም 🎉');
+  $('startBtn').textContent=isBD?'ስጦታዬን ክፈት 🎁':'ስጦታዬን ክፈት 🎁';
+  document.title=isBD?'መልካም ልደት 🎂':('መልካም አዲስ ዓመት 🌼 | '+ETH+' ዓ.ም');
+  loadMessages();
+}
+$('modeNY').onclick=()=>setMode('newyear');
+$('modeBD').onclick=()=>setMode('birthday');
+loadMessages();
 showB(0);
 
 const cv=$('fx'),ctx=cv.getContext('2d');
@@ -97,6 +128,7 @@ $('startBtn').onclick=()=>{
 $('nameInput').onkeydown=e=>{if(e.key==='Enter')$('startBtn').click()};
 try{const l=localStorage.getItem('ny_name');if(l)$('nameInput').value=l}catch(e){}
 const up=new URLSearchParams(location.search);if(up.get('name'))$('nameInput').value=decodeURIComponent(up.get('name')).slice(0,24);
+if(up.get('mode')==='birthday')setMode('birthday');
 
 $('gift').onclick=()=>{
   if(opened)return;opened=true;
@@ -110,15 +142,20 @@ $('gift').onclick=()=>{
 };
 $('prevB').onclick=()=>showB(bIdx-1);
 $('nextB').onclick=()=>showB(bIdx+1);
-$('againBtn').onclick=()=>location.href=location.pathname;
+$('againBtn').onclick=()=>location.href=location.pathname+(MODE==='birthday'?'?mode=birthday':'');
 $('shareBtn').onclick=async()=>{
   const u=new URL(location.href);if(NAME)u.searchParams.set('name',NAME.replace(/ዬ$|ye$/i,''));
-  const d={title:`መልካም አዲስ ዓመት ${ETH} ዓ.ም`,text:`መልካም አዲስ ዓመት ${NAME}! 🎁`,url:u.toString()};
+  u.searchParams.set('mode',MODE);
+  const title=MODE==='birthday'?`መልካም ልደት 🎂`:`መልካም አዲስ ዓመት ${ETH} ዓ.ም`;
+  const text=MODE==='birthday'?`መልካም ልደት ${NAME}! 🎂🎁`:`መልካም አዲስ ዓመት ${NAME}! 🎁`;
+  const d={title,text,url:u.toString()};
   try{if(navigator.share)await navigator.share(d);else if(navigator.clipboard){await navigator.clipboard.writeText(u.toString());toast('🔗 ሊንኩ ተቀድቷል!')}}catch(e){}
 };
 $('copyBtn').onclick=async()=>{
   const b=BLESSINGS[bIdx];
-  const t=`መልካም አዲስ ዓመት ${NAME}!\n\n${b.verse}\n${b.ref}\n\n${b.line}\n\n${ETH} ዓ.ም 🌼`;
+  const head=MODE==='birthday'?`መልካም ልደት ${NAME}! 🎂`:`መልካም አዲስ ዓመት ${NAME}!`;
+  const foot=MODE==='birthday'?'🎂🎈':'🌼 '+ETH+' ዓ.ም';
+  const t=`${head}\n\n${b.verse}\n${b.ref}\n\n${b.line}\n\n${foot}`;
   try{await navigator.clipboard.writeText(t);toast('📋 ጽሑፉ ተቀድቷል!')}catch(e){toast('መቅዳት አልተቻለም')}
 };
 $('soundBtn').onclick=()=>{musicOn=!musicOn;$('soundBtn').textContent=musicOn?'🔊':'🔇';toast(musicOn?'🔊 በርቷል':'🔇 ጠፍቷል')};
